@@ -1,14 +1,12 @@
-# Finan - Personal Expense Manager
+# Finan - Gerenciador de Despesas Pessoais
 
-📌 This readme document is available in [Portuguese](README.pt-BR.md).
-
----
+📌 Este documento readme está disponível em [Inglês](README.md).
 
 ![Finan](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
 ![Tkinter](https://img.shields.io/badge/Tkinter-GUI-orange.svg)
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 
-Finan é uma aplicação para controle de despesas pessoais, desenvolvida em **Python** com uma interface gráfica intuitiva utilizando **Tkinter**. O objetivo do projeto é fornecer uma solução prática e eficiente para gerenciar finanças, permitindo o acompanhamento de receitas, despesas e a geração de relatórios financeiros.
+Finan é uma aplicação para controle de despesas pessoais, desenvolvida em **Python** com uma interface gráfica intuitiva utilizando **Tkinter**. O objetivo do projeto é fornecer uma solução para gerenciar finanças, permitindo o acompanhamento de receitas e despesas.
 
 ## 📌 Funcionalidades
 
@@ -98,4 +96,3 @@ Caso tenha dúvidas, sugestões ou feedbacks, sinta-se à vontade para entrar em
 🌍 GitHub: [github.com/seuusuario](https://github.com/seuusuario)
 
 🔗 LinkedIn: [linkedin.com/in/seuusuario](https://linkedin.com/in/seuusuario)
-
