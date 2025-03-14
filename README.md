@@ -4,98 +4,97 @@
 
 ---
 
-![Finan](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
+![Finan](https://img.shields.io/badge/Python-3.13.2%2B-blue.svg)
 ![Tkinter](https://img.shields.io/badge/Tkinter-GUI-orange.svg)
-![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
+![matplotlib](https://img.shields.io/badge/Matplotlib-Charts-purple)
+![pandas](https://img.shields.io/badge/Pandas-Data-brown)
+![Status](https://img.shields.io/badge/Project_status-In%20progress-yellow)
 
-Finan é uma aplicação para controle de despesas pessoais, desenvolvida em **Python** com uma interface gráfica intuitiva utilizando **Tkinter**. O objetivo do projeto é fornecer uma solução prática e eficiente para gerenciar finanças, permitindo o acompanhamento de receitas, despesas e a geração de relatórios financeiros.
+Finan is an application for personal expense tracking, developed in **Python** with an intuitive graphical interface using **Tkinter**. The project's goal is to provide a practical and efficient solution for managing finances, allowing users to track incomes and financial expenses.
 
-## 📌 Funcionalidades
+## 📌 Features
 
-✅ Adicionar, editar e excluir despesas e receitas
-✅ Classificação por categorias (Alimentação, Transporte, Lazer, etc.)
-✅ Visualização de saldo atualizado em tempo real
-✅ Geração de relatórios financeiros
-✅ Interface amigável e responsiva
-✅ Persistência de dados em banco SQLite
-✅ Exportação de dados para CSV
+✅ Add and delete expenses and income  
+✅ Categorization by type (Food, Transportation, Leisure, etc.)  
+✅ Real-time balance update view   
+✅ Data persistence in SQLite database  
 
-## 🛠 Tecnologias Utilizadas
+## 🛠 Technologies Used  
 
-- **Python 3.10+**
-- **Tkinter** (Interface gráfica)
-- **SQLite** (Banco de dados local)
-- **Matplotlib** (Geração de gráficos)
-- **Pandas** (Manipulação de dados)
+- **Python 3.13.2+** (Programming language)  
+- **Tkinter** (Graphical interface)  
+- **SQLite** (Local database)  
+- **Matplotlib** (Chart generation)  
+- **Pandas** (Data manipulation)
 
-## 📦 Instalação
+## 📦 Installation
 
-1. Clone este repositório:
+1. Clone this repository:
    ```bash
-   git clone https://github.com/seuusuario/finan.git
+   git clone https://github.com/matheus-devhub/finan.git
    cd finan
    ```
-2. Crie um ambiente virtual e ative:
+2. Create and activate a virtual environment:
    ```bash
    python -m venv venv
-   # No Windows
+   # On Windows
    venv\Scripts\activate
-   # No Linux/Mac
+   # On Linux/Mac
    source venv/bin/activate
    ```
-3. Instale as dependências:
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-4. Execute a aplicação:
+4. Run the application:
    ```bash
    python main.py
    ```
 
-## 🖥 Capturas de Tela
+<!-- ## 🖥 Screenshots
+Add images of the application's interface here to illustrate its functionality. -->
 
-*Adicione aqui imagens da interface do aplicativo para ilustrar seu funcionamento.*
-
-## 🗂 Estrutura do Projeto
+## 🗂 Project Structure
 ```
 finan/
-│-- main.py  # Arquivo principal
-│-- gui.py  # Interface gráfica com Tkinter
-│-- database.py  # Gerenciamento do banco de dados SQLite
-│-- models.py  # Estrutura de dados e classes
-│-- reports.py  # Geração de relatórios financeiros
-│-- assets/  # Ícones e imagens
-│-- README.md  # Documentação do projeto
-│-- requirements.txt  # Dependências
+│-- img/  # Icons and images  
+│-- .gitignore  # Files ignored by Git  
+│-- createDB.py  # Database table creation  
+│-- finan.db  # Database file  
+│-- main.py  # Main file  
+│-- README.md  # Project documentation in English  
+│-- README.pt-BR.md  # Project documentation in Portuguese  
+│-- requirements.txt  # Dependencies
+│-- view.py  # Database creation  
+
 ```
 
 ## 📋 Roadmap
+🔹 Implement support for multiple currencies
+🔹 Improve UI design with Tkinter and ttk
+🔹 Create a web version using Flask/Django
+🔹 Add support for notifications and reminders
 
-🔹 Implementar suporte a múltiplas moedas
-🔹 Melhorar o design da interface com Tkinter e ttk
-🔹 Criar versão web com Flask/Django
-🔹 Adicionar suporte a notificações e lembretes
+## 🤝 Contributing
 
-## 🤝 Contribuindo
+Contributions are welcome! To contribute:
+1. Fork the project
+2. Create a new branch (`git checkout -b my-feature`)
+3. Make your changes and commit (`git commit -m 'Adding new feature'`)
+4. Push to the repository (`git push origin my-feature`)
+5. Open a Pull Request
 
-Contribuições são bem-vindas! Para contribuir:
-1. Faça um fork do projeto
-2. Crie uma nova branch (`git checkout -b minha-feature`)
-3. Faça suas alterações e commit (`git commit -m 'Adicionando nova funcionalidade'`)
-4. Envie para o repositório (`git push origin minha-feature`)
-5. Abra um Pull Request
+## 📜 License
 
-## 📜 Licença
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details..
 
-Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+## 📞 Contact
 
-## 📞 Contato
+If you have any questions, suggestions, or feedback, feel free to reach out:
 
-Caso tenha dúvidas, sugestões ou feedbacks, sinta-se à vontade para entrar em contato:
+📧 Email: [matheus.softwaredev@gmail.com](mailto:matheus.softwaredev@gmail.com)
 
-📧 Email: [seuemail@dominio.com](mailto:seuemail@dominio.com)
+🌍 Github: [github.com/mathues-devhub](https://github.com/mathues-devhub)
 
-🌍 GitHub: [github.com/seuusuario](https://github.com/seuusuario)
-
-🔗 LinkedIn: [linkedin.com/in/seuusuario](https://linkedin.com/in/seuusuario)
+🔗 LinkedIn: [linkedin.com/in/mathues-devhub](https://linkedin.com/in/matheusdevhub)
 
