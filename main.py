@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from tkcalendar import Calendar, DateEntry
 from datetime import date
-from view import values_bar, graph_values, percentage_values, inserting_category, view_category, inserting_revenues, inserting_expenses, table, delete_expenses, delete_revenues
+from view import values_bar, graph_values, percentage_value, inserting_category, view_category, inserting_revenues, inserting_expenses, table, delete_expenses, delete_revenues
 
 
 # Colors ----------------------------------------------------------------------------------------------------
@@ -27,7 +27,7 @@ colors = ['#5588bb', '#66bbbb', '#99bb55', '#ee9944', '#444466', '#bb5555']
 
 # Creating window ----------------------------------------------------------------------------------------------------
 window = Tk()
-window.title()
+window.title("Financial Manager")
 window.geometry('900x650')
 window.configure(background=co9)
 window.resizable(width=FALSE, height=FALSE)
@@ -49,15 +49,16 @@ incomeFrame = Frame(downFrame, width=300, height=250, bg=color_black)
 incomeFrame.grid(row=0, column=0)
 
 operationsFrame = Frame(downFrame, width=220, height=250, bg=color_black)
-incomeFrame.grid(row=0, column=1, padx=5)
+operationsFrame.grid(row=0, column=1, padx=5)
 
 configFrame = Frame(downFrame, width=220, height=250, bg=color_black)
-incomeFrame.grid(row=0, column=2, padx=5)
+configFrame.grid(row=0, column=2, padx=5)
 
 frame_gra_pie = Frame(midFrame, width=580, height=250, bg=co2)
 frame_gra_pie.place(x=415, y=5)
 
-# Apps ----------------------------------------------------------------------------------------------------
+# Working on upFrame ----------------------------------------------------------------------------------------------------
+
 # Acessing the image
 app_img = Image.open('./img/logo.png')
 app_img = app_img.resize((75,75))
@@ -93,7 +94,9 @@ def insert_category_2():
         category.append(i[1])
 
     # updating categories list
-    combo_expenses_category['values'] = (category)
+    combo_expenses_category['values'] = category
+    combo_expenses_category.set('')  # Adicionado para limpar a seleção anterior
+
 
 # insert revenues function
 def insert_revenues_2():
@@ -123,25 +126,26 @@ def insert_revenues_2():
     pie_graph()
 
 # insert expenses function
-def insert_revenues_2():
+# Correção do nome da função de despesas
+def insert_expenses_2():  # Estava como insert_revenues_2()
     name = combo_expenses_category.get()
     date = entry_calendar_expenses.get()
     qty = entry_expenses_value.get()
-
+    
     insert_list = [name, date, qty]
 
     for i in insert_list:
-        if i=='':
+        if i == '':
             messagebox.showerror('Error', 'Fill in all fields')
             return
-    # calling the insert expenses function present in view
+
     inserting_expenses(insert_list)
 
     messagebox.showinfo('Success', 'The data was entered successfully')
 
     combo_expenses_category.delete(0, 'end')
-    entry_calendar_expenses.delete(0,'end')
-    entry_expenses_value.delete(0,'end')
+    entry_calendar_expenses.delete(0, 'end')
+    entry_expenses_value.delete(0, 'end')
 
     # updating data
     showIncome()
@@ -222,7 +226,7 @@ entry_expenses_value.place(x=460, y=101)
 add_expenses_img = Image.open('./img/addBtn.png')
 add_expenses_img = add_expenses_img.resize((17,17))
 add_expenses_img = ImageTk.PhotoImage(add_expenses_img)
-add_expenses_btn = Button(downFrame, command=insert_revenues_2, image=add_expenses_img, text=" Add".upper(), width=80, compound=LEFT, anchor=NW, font=('Ivy 7 bold'), bg=color_black, fg=color_white, overrelief=RIDGE)
+add_expenses_btn = Button(downFrame, command=insert_expenses_2, image=add_expenses_img, text=" Add".upper(), width=80, compound=LEFT, anchor=NW, font=('Ivy 7 bold'), bg=color_black, fg=color_white, overrelief=RIDGE)
 add_expenses_btn.place(x=460, y=131)
 
 # Remove Btn
@@ -284,9 +288,9 @@ def percentage():
     
     bar = Progressbar(midFrame, length=180, style='black.Horizontal.TProgressbar')
     bar.place(x=10, y=35)
-    bar['value'] = percentage_values()
+    bar['value'] = percentage_value()
 
-    value = percentage_values()
+    value = percentage_value()[0]  # Pegando apenas o primeiro elemento da lista
     label_percentage = Label(midFrame, text="{:,.2f}%".format(value), anchor=NW, font=('Verdana 12'), bg=color_black, fg=co4)
     label_percentage.place(x=200, y=35)
 
@@ -306,7 +310,7 @@ def graphic_bar():
                 str("{:,.0f}".format(values_list[c])), fontsize=17, fontstyle='italic', verticalalignment='bottom', color='dimgrey')
         c += 1
 
-    ax.set_xticklabels(categories_list,fontsize=16)
+    ax.set_xticklabels(categories_list, fontsize=16)
 
     ax.patch.set_facecolor('#ffffff')
     ax.spines['bottom'].set_color('#CCCCCC')
@@ -352,7 +356,7 @@ def summary():
     label_summary.place(x=309, y=220)
 
 def pie_graph():
-    figure = plt.Figure(figsize=(5, 3), dpi=90)
+    figure = plt.Figure(figsize=(5,3), dpi=90)
     ax = figure.add_subplot(111)
 
     values_list = graph_values()[1]
@@ -362,7 +366,7 @@ def pie_graph():
     for i in categories_list:
         explode.append(0.05)
 
-    ax.pie(values_list, explode=explode, wedgeprops=dict(width=0.2), autopct='%1.1f%%', colors=colors,shadow=True, startangle=90)
+    ax.pie(values_list, explode=explode, wedgeprops=dict(width=0.2), autopct='%1.1f%%', colors=colors, shadow=True, startangle=90)
     ax.legend(categories_list, loc="center right", bbox_to_anchor=(1.55, 0.50))
 
     category_canva = FigureCanvasTkAgg(figure, frame_gra_pie)

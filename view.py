@@ -1,34 +1,33 @@
-# Importing SQLite
 import sqlite3 as lite
 import pandas as pd
 
 # Creating connection
 con = lite.connect('finan.db')
 
-# FUNCTIONS TO INSERT-------------------------------------------------------------------
+# INSERT FUNCTIONS -------------------------------------------------------------------
 
-# Inserting category
+# Insert category
 def inserting_category(i):
     with con:
         cur = con.cursor()
         query = "INSERT INTO Category (name) VALUES (?)"
         cur.execute(query, i)
 
-# Inserting revenues
+# Insert revenues
 def inserting_revenues(i):
     with con:
         cur = con.cursor()
         query = "INSERT INTO Revenues (category, added_in, value) VALUES (?,?,?)"
         cur.execute(query, i)
 
-# Inserting expenses
+# Insert expenses
 def inserting_expenses(i):
     with con:
         cur = con.cursor()
         query = "INSERT INTO Expenses (category, removed_in, value) VALUES (?,?,?)"
         cur.execute(query, i)
 
-# FUNCTIONS TO DELETE-------------------------------------------------------------------
+# DELETE FUNCTIONS -------------------------------------------------------------------
 
 # Deleting revenues
 def delete_revenues(i):
@@ -37,13 +36,14 @@ def delete_revenues(i):
         query = "DELETE FROM Revenues WHERE id=?"
         cur.execute(query, i)
 
+# Deleting expenses
 def delete_expenses(i):
     with con:
         cur = con.cursor()
         query = "DELETE FROM Expenses WHERE id=?"
         cur.execute(query, i)
 
-# FUNCTIONS TO VIEW DATA-------------------------------------------------------------------
+# VIEW DATA FUNCTIONS -------------------------------------------------------------------
 
 # View category
 def view_category():
@@ -101,33 +101,15 @@ def table():
 
 # Functions for graph data
 def values_bar():
-    # Total Revenue
-    revenues = view_revenues()
-    revenues_list = []
-
-    for i in revenues:
-        revenues_list.append(i[3])
-
-    total_revenue = sum(revenues_list)
-    
-    # Total Expense
-    expenses = view_expenses()
-    expenses_list = []
-
-    for i in expenses:
-        expenses_list.append(i[3])
-
-    total_expense = sum(expenses_list)
-
-    # Total Balance
-    total_balance = total_revenue - total_expense
-
-    return [total_revenue, total_expense, total_balance]
+    revenues = sum([i[3] for i in view_revenues()])
+    expenses = sum([i[3] for i in view_expenses()])
+    return [revenues, expenses, revenues - expenses]
 
 # Graph pie function
 def graph_values():
     expenses = view_expenses()
     table_list = []
+
     for i in expenses:
         table_list.append(i)
 
@@ -145,29 +127,19 @@ def graph_values():
     return([categories_list, qty_list])
 
 # Percentage Function
-def percentage_values():
-    # Total Revenue
-    revenues = view_revenues()
-    revenues_list = []
+def percentage_value():
+    revenues = sum([i[3] for i in view_revenues()])
+    expenses = sum([i[3] for i in view_expenses()])
 
-    for i in revenues:
-        revenues_list.append(i[3])
+    if revenues == 0:
+        return [0]  # Evita divisão por zero
 
-    total_revenue = sum(revenues_list)
+    return [((revenues - expenses) / revenues) * 100]
+
+
+
+
+
+
+
     
-    # Total Expense
-    expenses = view_expenses()
-    expenses_list = []
-
-    for i in expenses:
-        expenses_list.append(i[3])
-
-    total_expense = sum(expenses_list)
-
-    # Total Percentage
-    if total_revenue == 0:
-        total = 0  # Ou um valor padrão para evitar a divisão por zero
-    else:
-        total = ((total_revenue - total_expense) / total_revenue) * 100
-
-    return total

@@ -1,4 +1,3 @@
-# Importing SQLite
 import sqlite3 as lite
 
 # Creating connection
